@@ -10,10 +10,11 @@
 </head>
 <body>
 <div id="box">000</div>
-<div id="direction">3</div>
+<div id="direction">4</div>
 <script>
     var box = document.getElementById("box");
     var direction = document.getElementById("direction");
+    box.innerHTML = "123333";
     if(window.DeviceOrientationEvent){
         box.innerHTML = "123";
         window.addEventListener('devicemotion',DeviceOrientationHandler,true);
