@@ -9,7 +9,7 @@
     </style>
 </head>
 <body>
-<div id="box">0</div>
+<div id="box">00</div>
 <div id="direction">00</div>
 <script>
 //    if(window.DeviceOrientationEvent){
@@ -27,6 +27,7 @@
                 beta = event.beta,
                 gamma = event.gamma;
 
+        box.innerHTML(alpha+"//"+beta);
         if(alpha != null || beta != null || gamma != null){
             box.innerHTML = "alpha:" + alpha + "<br />beta:" + beta + "<br />gamma:" + gamma;
             //判断屏幕方向
