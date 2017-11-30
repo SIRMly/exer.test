@@ -10,26 +10,29 @@
 </head>
 <body>
 <div id="box">000</div>
-<div id="direction">2</div>
+<div id="direction">3</div>
 <script>
-//    if(window.DeviceOrientationEvent){
-        window.addEventListener('devicemotion',DeviceOrientationHandler,true);
-//    }else{
-//        alert("您的浏览器不支持DeviceOrientation");
-//    }
     var box = document.getElementById("box");
     var direction = document.getElementById("direction");
+    if(window.DeviceOrientationEvent){
+        box.innerHTML = "123";
+        window.addEventListener('devicemotion',DeviceOrientationHandler,true);
+    }else{
+        alert("您的浏览器不支持DeviceOrientation");
+    }
+
 
     var GAMMA_MIN  = 0,BETA_MIN = 0;
     var BETA_MAX = 90, GAMMA_MAX = 90;
     function DeviceOrientationHandler(event){
+        direction.innerHTML = "2223";
         var acceleration = event.accelerationIncludingGravity;
 
 
 
         var alpha = acceleration.x,
-                beta = acceleration.x,
-                gamma = acceleration.x;
+                beta = acceleration.y,
+                gamma = acceleration.z;
 
         box.innerHTML = alpha+"//"+beta;
         if(alpha != null || beta != null || gamma != null){
