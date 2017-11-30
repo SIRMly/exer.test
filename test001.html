@@ -1,69 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="initial-scale=1 , user-scalable=no">
+<head>
+    <title>Mobile Cookbook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        *{padding: 0; margin: 0;}
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
     </style>
+
 </head>
 <body>
-<div id="box">0</div>
-<div id="direction">6</div>
+<div id="a">手机旋转  jquery
+</div>
+<script src="jquery.min.js"></script>
 <script>
-    window.onload = function (){
-        var box = document.getElementById("box");
-        var direction = document.getElementById("direction");
-        box.innerHTML = "123333";
-        if("ondevicemotion" in document){
-            box.innerHTML = "123";
-            window.addEventListener('deviceorientation',handleOrientation,true);
-        }else{
-            box.innerHTML = "您的浏览器不支持DeviceOrientation";
-        }
-
-
-        var GAMMA_MIN  = 0,BETA_MIN = 0;
-        var BETA_MAX = 90, GAMMA_MAX = 90;
-    };
-
-    function handleOrientation(event){
-        direction.innerHTML = "2223";
-//        var acceleration = event.accelerationIncludingGravity;
-
-
-
-        var alpha = event.alpha,
-                beta = event.beta,
-                gamma = event.gamma;
-
-        box.innerHTML = alpha+"//"+beta;
-        if(alpha != null || beta != null || gamma != null){
-            box.innerHTML = "alpha:" + alpha + "<br />beta:" + beta + "<br />gamma:" + gamma;
-            //判断屏幕方向
-            var html = "";
-            if( Math.abs(gamma) < GAMMA_MIN && Math.abs(beta) > BETA_MAX ){
-                html = "屏幕方向：Portrait";
-            }
-
-            if( Math.abs(beta) < BETA_MIN && Math.abs(gamma) > GAMMA_MAX ){
-                html = "屏幕方向：Landscape";
-            }
-
-            var gamma_html = "";
-            if( gamma > 0 ){
-                gamma_html = "向右倾斜";
-            }else{
-                gamma_html = "向左倾斜";
-            }
-            html += "<br />"+gamma_html;
-            direction.innerHTML = html;
-        }else{
-            box.innerHTML = "当前浏览器不支持DeviceOrientation";
-        }
+    $(window).bind('orientationchange',function(event){
+        updateOrientation(event.orientation);
+    });
+    function updateOrientation(orientation) {
+        $("#a").html("<p>"+orientation.toUpperCase()+"</p>");
     }
-
 </script>
 </body>
 </html>
