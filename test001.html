@@ -10,10 +10,10 @@
 </head>
 <body>
 <div id="box">000</div>
-<div id="direction">1</div>
+<div id="direction">2</div>
 <script>
 //    if(window.DeviceOrientationEvent){
-        window.addEventListener('deviceorientation',DeviceOrientationHandler,true);
+        window.addEventListener('devicemotion',DeviceOrientationHandler,true);
 //    }else{
 //        alert("您的浏览器不支持DeviceOrientation");
 //    }
@@ -23,9 +23,13 @@
     var GAMMA_MIN  = 0,BETA_MIN = 0;
     var BETA_MAX = 90, GAMMA_MAX = 90;
     function DeviceOrientationHandler(event){
-        var alpha = event.alpha,
-                beta = event.beta,
-                gamma = event.gamma;
+        var acceleration = event.accelerationIncludingGravity;
+
+
+
+        var alpha = acceleration.x,
+                beta = acceleration.x,
+                gamma = acceleration.x;
 
         box.innerHTML = alpha+"//"+beta;
         if(alpha != null || beta != null || gamma != null){
