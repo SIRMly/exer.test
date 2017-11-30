@@ -10,21 +10,24 @@
 </head>
 <body>
 <div id="box">0</div>
-<div id="direction">56</div>
+<div id="direction">6</div>
 <script>
-    var box = document.getElementById("box");
-    var direction = document.getElementById("direction");
-    box.innerHTML = "123333";
-    if("ondevicemotion" in window){
-        box.innerHTML = "123";
-        window.addEventListener('deviceorientation',handleOrientation,true);
-    }else{
-        box.innerHTML = "您的浏览器不支持DeviceOrientation";
-    }
+    window.onload = function (){
+        var box = document.getElementById("box");
+        var direction = document.getElementById("direction");
+        box.innerHTML = "123333";
+        if("ondevicemotion" in document){
+            box.innerHTML = "123";
+            window.addEventListener('deviceorientation',handleOrientation,true);
+        }else{
+            box.innerHTML = "您的浏览器不支持DeviceOrientation";
+        }
 
 
-    var GAMMA_MIN  = 0,BETA_MIN = 0;
-    var BETA_MAX = 90, GAMMA_MAX = 90;
+        var GAMMA_MIN  = 0,BETA_MIN = 0;
+        var BETA_MAX = 90, GAMMA_MAX = 90;
+    };
+
     function handleOrientation(event){
         direction.innerHTML = "2223";
 //        var acceleration = event.accelerationIncludingGravity;
