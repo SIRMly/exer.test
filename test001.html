@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<div id="a">手机旋转  jquery00</div>
+<div id="a">手机旋转</div>
 <!--<script src="jquery.min.js"></script>-->
 <script src="shake.js"></script>
 <script>
@@ -24,6 +24,7 @@
     window.addEventListener('shake', shakeEventDidOccur, false);
     // 摇动
     function shakeEventDidOccur() {
+        document.getElementById("a").innerHTML = "11111";
 //        window.removeEventListener('shake', shakeEventDidOccur, false);
        document.getElementById("a").innerHTML = myShakeEvent.devicemotion.lastX;
     }
