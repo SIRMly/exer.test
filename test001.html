@@ -10,13 +10,13 @@
 </head>
 <body>
 <div id="box">0</div>
-<div id="direction">0</div>
+<div id="direction">00</div>
 <script>
-    if(window.DeviceOrientationEvent){
+//    if(window.DeviceOrientationEvent){
         window.addEventListener('deviceorientation',DeviceOrientationHandler,false);
-    }else{
-        alert("您的浏览器不支持DeviceOrientation");
-    }
+//    }else{
+//        alert("您的浏览器不支持DeviceOrientation");
+//    }
     var box = document.getElementById("box");
     var direction = document.getElementById("direction");
 
