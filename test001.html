@@ -9,31 +9,31 @@
     </style>
 </head>
 <body>
-<div id="box">000</div>
-<div id="direction">4</div>
+<div id="box">00</div>
+<div id="direction">5</div>
 <script>
     var box = document.getElementById("box");
     var direction = document.getElementById("direction");
     box.innerHTML = "123333";
-    if(window.DeviceOrientationEvent){
+    if(window.DeviceOrientationEvent    ){
         box.innerHTML = "123";
-        window.addEventListener('devicemotion',DeviceOrientationHandler,true);
+        window.addEventListener('deviceorientation',handleOrientation,true);
     }else{
-        alert("您的浏览器不支持DeviceOrientation");
+        box.innerHTML = "您的浏览器不支持DeviceOrientation";
     }
 
 
     var GAMMA_MIN  = 0,BETA_MIN = 0;
     var BETA_MAX = 90, GAMMA_MAX = 90;
-    function DeviceOrientationHandler(event){
+    function handleOrientation(event){
         direction.innerHTML = "2223";
-        var acceleration = event.accelerationIncludingGravity;
+//        var acceleration = event.accelerationIncludingGravity;
 
 
 
-        var alpha = acceleration.x,
-                beta = acceleration.y,
-                gamma = acceleration.z;
+        var alpha = event.alpha,
+                beta = event.beta,
+                gamma = event.gamma;
 
         box.innerHTML = alpha+"//"+beta;
         if(alpha != null || beta != null || gamma != null){
