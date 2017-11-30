@@ -13,17 +13,21 @@
 
 </head>
 <body>
-<div id="a">手机旋转  jquery00
-</div>
-<script src="jquery.min.js"></script>
+<div id="a">手机旋转  jquery00</div>
+<!--<script src="jquery.min.js"></script>-->
+<script src="shake.js"></script>
 <script>
-    $(window).bind('orientationchange',function(event){
-        $("#a").html(1111);
-        updateOrientation(event.orientation);
+    var myShakeEvent = new Shake({
+        threshold: 40
     });
-    function updateOrientation(orientation) {
-        $("#a").html("<p>"+orientation.toUpperCase()+"</p>");
+    myShakeEvent.start();
+    window.addEventListener('shake', shakeEventDidOccur, false);
+    // 摇动
+    function shakeEventDidOccur() {
+//        window.removeEventListener('shake', shakeEventDidOccur, false);
+       document.getElementById("a").innerHTML = myShakeEvent.devicemotion.lastX;
     }
+
 </script>
 </body>
 </html>
