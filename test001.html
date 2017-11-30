@@ -13,11 +13,12 @@
 
 </head>
 <body>
-<div id="a">手机旋转  jquery
+<div id="a">手机旋转  jquery00
 </div>
 <script src="jquery.min.js"></script>
 <script>
     $(window).bind('orientationchange',function(event){
+        $("#a").html(1111);
         updateOrientation(event.orientation);
     });
     function updateOrientation(orientation) {
